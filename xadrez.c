@@ -1,60 +1,52 @@
 #include <stdio.h>
-int main(){
+void movimentotorre (int casas){//torre: 5 casas direita
+    if (casas > 0)
+    {
+        printf("DIREITA\n");
+        movimentotorre (casas - 1);
+        printf("\n");
+    }
+} 
 
-    //torre: 5 casas direita, bispo: 5 casas diagonal cima e a direita, rainha: 8 casas esquerda, Cavalo: duas pra baixo e uma pra esquerda.
-    int peca, i = 1, movimento_completo = 1;
-        
-        printf("===Escolha uma peça para movimentá-la===\n");
-        printf("1.Torre\n");
-        printf("2.Bipo\n");
-        printf("3.Rainha\n");
-        printf("4.Cavalo\n");
-        scanf("%d", &peca);
+void movimentorainha (int casas){//rainha: 8 casas esquerda
+    if (casas > 0)
+    {
+        printf("ESQUERDA\n");
+        movimentorainha(casas -1);
+        printf("\n");
+    }
+}
 
-        switch (peca)
+
+int main (){
+        printf("Movimento TORRE\n");
+        movimentotorre (5);
+        printf("Movimento RAINHA\n");
+        movimentorainha(8);
+
+        printf("Movimento BISPO\n");//bispo: 5 casas diagonal cima e a direita
+        for (int i = 1; i <= 5; i++)
         {
-        case 1:
-            printf("Você selecionou TORRE\n");
-            while (i<=5)
+            for (int j = 1; j == 1; j++)
             {
-                printf("Direita\n");
-                i++;                
+                printf("DIREITA\n");
             }
-            break;
-        case 2:
-            printf("Voce selecionou BISPO\n");
-            for (int i = 1; i == 1; i++)
-            {
-                for (int j = 1; j <= 5; j++)
-                {
-                    printf("Cima\n");
-                }
-                printf("Direita\n");                
-            }
-            
-           
-            break;
-        case 3:
-            printf("Você selecionou RAINHA\n");
-            for ( i; i <= 8; i++)
-            {
-                printf("Esquerda\n");
-            }
-            break;
-        case 4:
-            printf("Você selecionaou CAVALO\n");
-            while (movimento_completo--)
-            {
-                for (int i = 1; i <= 2; i++)
-                {
-                    printf("Baixo\n");
-                }
-                printf("Esquerda\n");
-            }
-            break;
-        default:
-            printf("Opção inválida\n");
-            break;
+        printf("CIMA\n");
         }
+        
+        printf("\n");
+        printf("Movimento CAVALO\n");//cavalo duas casas para cima e uma para a direita
+        for (int i = 1; i <= 1; i++)
+        {
+            for (int j = 0; j <= 2; j++)
+            {
+                if (j==2)break;
+                printf("CIMA\n");
+            }
+        printf("DIREITA\n");
+        }   
+        
+         
+return 0;
 
 }
